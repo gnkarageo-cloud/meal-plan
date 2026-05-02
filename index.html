@@ -7,9 +7,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Meal Plan" />
   <meta name="theme-color" content="#faf9f7" />
-  <title>Meal Plan</title>
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="icon" type="image/png" href="apple-touch-icon.png" />
+  <title>Meal Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -644,22 +646,33 @@
     const row   = document.getElementById('weekRow');
     row.innerHTML = '';
     const d = new Date();
+    // Start from Monday: getDay() returns 0=Sun,1=Mon,...6=Sat
+    // Monday-based offset: if today is Sun (0), go back 6; otherwise go back (getDay()-1)
+    const dayOfWeek = d.getDay();
+    const mondayOffset = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
     const startOfWeek = new Date(d);
-    startOfWeek.setDate(d.getDate() - d.getDay());
+    startOfWeek.setDate(d.getDate() - mondayOffset);
+
+    // Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6 (display order)
+    const MON_BASED_NAMES = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    // Map display index (0=Mon) to JS getDay() value
+    const displayToJsDay = [1, 2, 3, 4, 5, 6, 0];
+
     for (let i = 0; i < 7; i++) {
       const day = new Date(startOfWeek);
       day.setDate(startOfWeek.getDate() + i);
+      const jsDay = displayToJsDay[i];
+      const isToday = jsDay === today;
       const pill = document.createElement('div');
-      pill.className = 'day-pill' + (i === today ? ' today selected' : '');
-      pill.innerHTML = `<span class="day-letter">${DAY_NAMES[i]}</span><span class="day-num">${day.getDate()}</span>`;
-      const di = i;
+      pill.className = 'day-pill' + (isToday ? ' today selected' : '');
+      pill.innerHTML = `<span class="day-letter">${MON_BASED_NAMES[i]}</span><span class="day-num">${day.getDate()}</span>`;
       pill.onclick = () => {
         document.querySelectorAll('.day-pill').forEach(p => p.classList.remove('selected'));
         pill.classList.add('selected');
-        viewingDay = di;
+        viewingDay = jsDay;
         closeDetail();
-        renderMeals(di);
-        renderDate(di);
+        renderMeals(jsDay);
+        renderDate(jsDay);
       };
       row.appendChild(pill);
     }

@@ -12,29 +12,37 @@
   <title>Meal Plan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet"
+  />
   <style>
     :root {
-      --bg: #faf9f7;
-      --bg2: #f2f0ec;
-      --bg3: #e8e5df;
-      --text: #1a1816;
-      --text2: #6b6560;
-      --text3: #a09a93;
-      --border: #e0dbd3;
-      --accent: #2a5c3f;
-      --accent-bg: #edf4ef;
-      --accent-text: #2a5c3f;
-      --warn-bg: #fef8ec;
-      --warn-text: #92660a;
-      --info-border: #7aadff;
-      --info-bg: #f0f5ff;
-      --info-text: #1a4fa0;
-      --radius: 16px;
-      --radius-sm: 10px;
+      --bg:           #faf9f7;
+      --bg2:          #f2f0ec;
+      --bg3:          #e8e5df;
+      --text:         #1a1816;
+      --text2:        #6b6560;
+      --text3:        #a09a93;
+      --border:       #e0dbd3;
+      --accent:       #2a5c3f;
+      --accent-bg:    #edf4ef;
+      --accent-text:  #2a5c3f;
+      --warn-bg:      #fef8ec;
+      --warn-text:    #92660a;
+      --info-border:  #7aadff;
+      --info-bg:      #f0f5ff;
+      --info-text:    #1a4fa0;
+      --radius:       16px;
+      --radius-sm:    10px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
     html, body {
       background: var(--bg);
@@ -50,7 +58,7 @@
       padding: 0 0 100px;
     }
 
-    /* ── Header ── */
+    /* Header */
     .header {
       padding: 56px 20px 0;
       margin-bottom: 24px;
@@ -70,10 +78,9 @@
       line-height: 1.2;
     }
 
-    /* ── Tab bar ── */
+    /* Tab bar */
     .tab-bar {
       display: flex;
-      gap: 0;
       padding: 0 20px;
       margin-bottom: 24px;
       border-bottom: 1px solid var(--border);
@@ -96,10 +103,15 @@
       border-bottom-color: var(--text);
     }
 
-    .view { display: none; padding: 0 20px; }
-    .view.active { display: block; }
+    .view {
+      display: none;
+      padding: 0 20px;
+    }
+    .view.active {
+      display: block;
+    }
 
-    /* ── Meal cards ── */
+    /* Meal cards */
     .meal-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -112,13 +124,17 @@
       border-radius: var(--radius);
       padding: 16px;
       cursor: pointer;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      transition: border-color 0.15s;
       -webkit-user-select: none;
       user-select: none;
     }
-    .meal-card:active { transform: scale(0.98); }
-    .meal-card.active { border-color: var(--info-border); background: var(--info-bg); }
-
+    .meal-card:active {
+      transform: scale(0.98);
+    }
+    .meal-card.active {
+      border-color: var(--info-border);
+      background: var(--info-bg);
+    }
     .meal-type {
       font-size: 10px;
       font-weight: 500;
@@ -130,10 +146,14 @@
       align-items: center;
       gap: 6px;
     }
-    .meal-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .dot-lunch { background: #d4921a; }
+    .meal-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-lunch  { background: #d4921a; }
     .dot-dinner { background: #2855a0; }
-
     .meal-name {
       font-family: 'Lora', serif;
       font-size: 17px;
@@ -141,10 +161,17 @@
       line-height: 1.3;
       margin-bottom: 6px;
     }
-    .meal-meta { font-size: 11px; color: var(--text2); margin-bottom: 10px; }
-    .tap-hint { font-size: 11px; color: var(--text3); }
+    .meal-meta {
+      font-size: 11px;
+      color: var(--text2);
+      margin-bottom: 10px;
+    }
+    .tap-hint {
+      font-size: 11px;
+      color: var(--text3);
+    }
 
-    /* ── Detail panel ── */
+    /* Detail panel */
     .detail-panel {
       background: white;
       border: 1px solid var(--border);
@@ -153,12 +180,14 @@
       display: none;
       margin-bottom: 16px;
     }
-    .detail-panel.visible { display: block; animation: slideDown 0.2s ease; }
+    .detail-panel.visible {
+      display: block;
+      animation: slideDown 0.2s ease;
+    }
     @keyframes slideDown {
       from { opacity: 0; transform: translateY(-8px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     .detail-header {
       display: flex;
       align-items: flex-start;
@@ -181,9 +210,7 @@
       line-height: 1;
       padding: 0;
       flex-shrink: 0;
-      margin-top: -2px;
     }
-
     .section-label {
       font-size: 10px;
       font-weight: 500;
@@ -192,8 +219,10 @@
       color: var(--text3);
       margin-bottom: 10px;
     }
-
-    .ingredients-list { list-style: none; margin-bottom: 24px; }
+    .ingredients-list {
+      list-style: none;
+      margin-bottom: 24px;
+    }
     .ingredients-list li {
       font-size: 14px;
       color: var(--text);
@@ -204,16 +233,21 @@
       gap: 10px;
       line-height: 1.4;
     }
-    .ingredients-list li:last-child { border-bottom: none; }
+    .ingredients-list li:last-child {
+      border-bottom: none;
+    }
     .ing-dot {
-      width: 5px; height: 5px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--text3);
       flex-shrink: 0;
       margin-top: 6px;
     }
-
-    .steps-list { list-style: none; counter-reset: steps; }
+    .steps-list {
+      list-style: none;
+      counter-reset: steps;
+    }
     .steps-list li {
       font-size: 14px;
       color: var(--text);
@@ -224,7 +258,9 @@
       gap: 12px;
       counter-increment: steps;
     }
-    .steps-list li:last-child { border-bottom: none; }
+    .steps-list li:last-child {
+      border-bottom: none;
+    }
     .steps-list li::before {
       content: counter(steps);
       font-size: 11px;
@@ -240,7 +276,6 @@
       flex-shrink: 0;
       margin-top: 2px;
     }
-
     .note-tag {
       display: inline-block;
       font-size: 12px;
@@ -252,8 +287,10 @@
       line-height: 1.5;
     }
 
-    /* ── Week strip ── */
-    .week-nav { margin-top: 8px; }
+    /* Week strip */
+    .week-nav {
+      margin-top: 8px;
+    }
     .week-label {
       font-size: 10px;
       font-weight: 500;
@@ -280,13 +317,29 @@
       -webkit-user-select: none;
       user-select: none;
     }
-    .day-pill:active { transform: scale(0.95); }
-    .day-pill.today { border-color: var(--info-border); color: var(--info-text); background: var(--info-bg); }
-    .day-pill.selected { background: var(--bg2); border-color: var(--bg3); color: var(--text); }
-    .day-letter { font-weight: 600; display: block; margin-bottom: 2px; }
-    .day-num { display: block; }
+    .day-pill:active {
+      transform: scale(0.95);
+    }
+    .day-pill.today {
+      border-color: var(--info-border);
+      color: var(--info-text);
+      background: var(--info-bg);
+    }
+    .day-pill.selected {
+      background: var(--bg2);
+      border-color: var(--bg3);
+      color: var(--text);
+    }
+    .day-letter {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .day-num {
+      display: block;
+    }
 
-    /* ── Batch prep ── */
+    /* Batch prep */
     .batch-intro {
       font-size: 14px;
       color: var(--text2);
@@ -302,10 +355,15 @@
       margin-bottom: 10px;
       margin-top: 24px;
     }
-    .batch-section-label:first-of-type { margin-top: 0; }
-
-    .sauce-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-
+    .batch-section-label:first-of-type {
+      margin-top: 0;
+    }
+    .sauce-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
     .sauce-card, .bake-card {
       background: white;
       border: 1px solid var(--border);
@@ -316,10 +374,16 @@
       -webkit-user-select: none;
       user-select: none;
     }
-    .sauce-card:active, .bake-card:active { transform: scale(0.98); }
-    .sauce-card.active, .bake-card.active { border-color: var(--accent); background: var(--accent-bg); }
-    .bake-card { margin-bottom: 12px; }
-
+    .sauce-card:active, .bake-card:active {
+      transform: scale(0.98);
+    }
+    .sauce-card.active, .bake-card.active {
+      border-color: var(--accent);
+      background: var(--accent-bg);
+    }
+    .bake-card {
+      margin-bottom: 12px;
+    }
     .sauce-badge {
       font-size: 10px;
       font-weight: 500;
@@ -343,8 +407,10 @@
       margin-bottom: 4px;
       line-height: 1.3;
     }
-    .sauce-used { font-size: 12px; color: var(--text2); }
-
+    .sauce-used {
+      font-size: 12px;
+      color: var(--text2);
+    }
     .sauce-detail {
       background: white;
       border: 1px solid var(--border);
@@ -353,7 +419,10 @@
       display: none;
       margin-bottom: 12px;
     }
-    .sauce-detail.visible { display: block; animation: slideDown 0.2s ease; }
+    .sauce-detail.visible {
+      display: block;
+      animation: slideDown 0.2s ease;
+    }
   </style>
 </head>
 <body>
@@ -371,15 +440,20 @@
 
   <!-- MEALS VIEW -->
   <div id="view-meals" class="view active">
+
     <div class="meal-grid">
       <div class="meal-card" id="card-lunch" onclick="toggleDetail('lunch')">
-        <div class="meal-type"><span class="meal-dot dot-lunch"></span>Lunch</div>
+        <div class="meal-type">
+          <span class="meal-dot dot-lunch"></span>Lunch
+        </div>
         <div class="meal-name" id="lunch-name"></div>
         <div class="meal-meta" id="lunch-meta"></div>
         <div class="tap-hint">Tap for recipe</div>
       </div>
       <div class="meal-card" id="card-dinner" onclick="toggleDetail('dinner')">
-        <div class="meal-type"><span class="meal-dot dot-dinner"></span>Dinner</div>
+        <div class="meal-type">
+          <span class="meal-dot dot-dinner"></span>Dinner
+        </div>
         <div class="meal-name" id="dinner-name"></div>
         <div class="meal-meta" id="dinner-meta"></div>
         <div class="tap-hint">Tap for recipe</div>
@@ -389,7 +463,7 @@
     <div class="detail-panel" id="detail-panel">
       <div class="detail-header">
         <div class="detail-name" id="detail-title"></div>
-        <button class="close-btn" onclick="closeDetail()">×</button>
+        <button class="close-btn" onclick="closeDetail()">&#215;</button>
       </div>
       <div class="section-label">Ingredients</div>
       <ul class="ingredients-list" id="detail-ingredients"></ul>
@@ -402,30 +476,33 @@
       <div class="week-label">This week</div>
       <div class="week-row" id="weekRow"></div>
     </div>
+
   </div>
 
   <!-- BATCH PREP VIEW -->
   <div id="view-batch" class="view">
+
     <p class="batch-intro">Make these every Saturday — they keep all week.</p>
 
     <div class="batch-section-label">Sauces</div>
+
     <div class="sauce-grid">
       <div class="sauce-card" id="sc-miso" onclick="toggleBatch('miso')">
         <div class="sauce-badge">Jar</div>
         <div class="sauce-name">Miso-honey dressing</div>
-        <div class="sauce-used">Lentil Salad · Protein Bowl</div>
+        <div class="sauce-used">Lentil Salad &middot; Protein Bowl</div>
       </div>
       <div class="sauce-card" id="sc-kefir" onclick="toggleBatch('kefir')">
         <div class="sauce-badge">Double batch</div>
         <div class="sauce-name">Herby kefir sauce</div>
-        <div class="sauce-used">Med Veggie · Biftekia</div>
+        <div class="sauce-used">Med Veggie &middot; Biftekia</div>
       </div>
     </div>
 
     <div class="sauce-detail" id="sd-miso">
       <div class="detail-header">
         <div class="detail-name">Miso-honey dressing</div>
-        <button class="close-btn" onclick="closeBatch('miso')">×</button>
+        <button class="close-btn" onclick="closeBatch('miso')">&#215;</button>
       </div>
       <div class="section-label">Ingredients</div>
       <ul class="ingredients-list">
@@ -447,7 +524,7 @@
     <div class="sauce-detail" id="sd-kefir">
       <div class="detail-header">
         <div class="detail-name">Herby kefir sauce</div>
-        <button class="close-btn" onclick="closeBatch('kefir')">×</button>
+        <button class="close-btn" onclick="closeBatch('kefir')">&#215;</button>
       </div>
       <div class="section-label">Ingredients</div>
       <ul class="ingredients-list">
@@ -462,20 +539,21 @@
         <li>Whisk or blend all ingredients together.</li>
         <li>Store in a jar in the fridge.</li>
       </ol>
-      <div class="note-tag">Double batch — covers the full week</div>
+      <div class="note-tag">Double batch &mdash; covers the full week</div>
     </div>
 
     <div class="batch-section-label">Bakes</div>
+
     <div class="bake-card" id="sc-banana" onclick="toggleBatch('banana')">
-      <div class="sauce-badge">Double batch — 2 loaves</div>
+      <div class="sauce-badge">Double batch &mdash; 2 loaves</div>
       <div class="sauce-name">Banana oat bread</div>
-      <div class="sauce-used">8–10 slices per loaf · store in fridge</div>
+      <div class="sauce-used">8&ndash;10 slices per loaf &middot; store in fridge</div>
     </div>
 
     <div class="sauce-detail" id="sd-banana">
       <div class="detail-header">
         <div class="detail-name">Banana oat bread</div>
-        <button class="close-btn" onclick="closeBatch('banana')">×</button>
+        <button class="close-btn" onclick="closeBatch('banana')">&#215;</button>
       </div>
       <div class="section-label">Ingredients (double batch)</div>
       <ul class="ingredients-list">
@@ -496,197 +574,413 @@
         <li>Mash bananas in a large bowl.</li>
         <li>Blend oats into flour.</li>
         <li>Mix all ingredients together until combined.</li>
-        <li>Pour batter into a lined loaf tin. Bake at 175°C for 35–40 min.</li>
-        <li>Cool completely before slicing into 8–10 pieces. Store in fridge.</li>
+        <li>Pour batter into a lined loaf tin. Bake at 175&deg;C for 35&ndash;40 min.</li>
+        <li>Cool completely before slicing into 8&ndash;10 pieces. Store in fridge.</li>
       </ol>
-      <div class="note-tag">Makes 2 loaves — bake separately</div>
+      <div class="note-tag">Makes 2 loaves &mdash; bake separately</div>
     </div>
+
   </div>
 
 </div>
-
 <script>
-  const DAY_NAMES  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const FULL_DAYS  = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const MONTHS     = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var DAY_NAMES  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var FULL_DAYS  = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var MONTHS     = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-  const RECIPES = {
-    souvlaki: {
-      name: 'Souvlaki Bowl', meta: '20 min · Chicken thighs',
-      ingredients: ['400g chicken thighs (boneless, skin-on)','1 tbsp olive oil','1 tsp dried oregano','1 tsp smoked paprika','½ tsp garlic powder','Salt, pepper, splash of vinegar','1 large sweet potato (air-fried, from Sat batch)','Handful cherry tomatoes','½ cucumber (sliced)','¼ red onion (pickled, from Sat batch)','1 cup frozen shredded cabbage','Fresh parsley','3 tbsp Greek yogurt + sriracha (sauce)'],
-      steps: ['Marinate chicken thighs in olive oil, oregano, paprika, garlic powder, salt, pepper and vinegar for at least 15 min.','Air-fry chicken at 200°C for 18–20 min, flipping halfway, until cooked through.','Reheat sweet potato from Saturday batch.','Arrange bowl: cabbage, sweet potato, tomatoes, cucumber, pickled onion, parsley.','Slice chicken and place on top. Mix yogurt and sriracha, serve alongside.'],
-      note: null
-    },
-    protein_bowl: {
-      name: 'Protein Bowl', meta: '25 min · Salmon',
-      ingredients: ['300g salmon fillet, skin-on','80g red quinoa (dry weight)','80g frozen kale cubes','1 medium zucchini (sliced, air-fried)','80g frozen edamame (thawed)','Handful cherry tomatoes (halved)','½ cucumber (sliced)','¼ red onion (pickled, from fridge jar)','30g feta cheese (crumbled)','Fresh parsley','2–3 tbsp miso-honey dressing (from fridge jar)'],
-      steps: ['Cook red quinoa in rice cooker.','Air-fry or pan-sear salmon skin-side down 4–5 min, flip 3 more min. Always eat the skin.','Thaw kale cubes, squeeze dry, warm 1–2 min in pan with olive oil, lemon and salt. Cool before adding to bowl.','Air-fry zucchini slices until tender.','Assemble: quinoa base, kale, zucchini, edamame, tomatoes, cucumber, pickled onion.','Top with salmon and feta. Drizzle with miso-honey dressing.'],
-      note: '⚠️ No chickpeas — weekly max already reached on Wed.'
-    },
-    noodles: {
-      name: 'Asian Noodles', meta: '25 min · Chicken thighs',
-      ingredients: ['400g chicken thighs','100g rice noodles (dry weight)','1 cup frozen shredded cabbage','Large handful frozen kale cubes','200ml hot water + 1 tsp chicken stock powder','1 tbsp miso paste (add off heat)','2 tbsp kimchi (added after cooking)','2 tbsp low-sodium soy sauce','1 tsp fish sauce','1 tbsp natural peanut butter','1 tbsp peanuts','1 tsp chili oil','1 tsp chili flakes','2 garlic cloves (minced)','1 tsp smoked paprika'],
-      steps: ['Cook chicken thighs in pan or air fryer. Slice.','Sauté garlic with paprika and chili flakes in a little oil.','Add hot water + stock powder. Stir in soy sauce, fish sauce and peanut butter.','Add frozen cabbage directly into broth, simmer 3 min.','Add rice noodles, cook per packet.','Add frozen kale last 2–3 min — it thaws instantly.','Remove from heat, stir in miso paste. Do not boil after this.','Serve topped with chicken, kimchi, peanuts and chili oil.'],
-      note: null
-    },
-    curry: {
-      name: 'Chicken Curry', meta: '35 min · Chicken breast',
-      ingredients: ['400g chicken breast','200ml light coconut milk','1 tbsp olive or coconut oil','1 medium onion (diced)','3 garlic cloves (minced)','1 tsp fresh ginger (grated)','1 tsp turmeric','1 tsp cumin','1 tsp coriander powder','1 tsp garam masala','½ tsp chilli powder','Salt to taste','100g frozen spinach','0.5 cup green peas','60g brown rice (dry weight)','100ml kefir + pinch cumin (raita)'],
-      steps: ['Cook brown rice in rice cooker.','Heat oil, sauté onion until golden (~5 min). Add garlic and ginger, cook 1 min.','Add all spices, stir 30 sec until fragrant.','Add cubed chicken breast, cook until sealed.','Pour in coconut milk, simmer 15 min.','Stir in frozen spinach and peas, cook 2 more min.','Serve over rice with kefir-cumin raita on the side.'],
-      note: null
-    },
-    biftekia: {
-      name: 'Biftekia', meta: '35 min · Greek beef patties',
-      ingredients: ['250g lean ground beef (10–15% fat)','1 small onion (grated)','1 garlic clove (minced)','1 egg','½ zucchini (grated)','1 carrot (grated)','100g mushrooms (finely diced)','1 tbsp dried oregano','1 tsp smoked paprika','Salt, pepper, splash soy sauce','1 large sweet potato (from Sat batch)','3–4 tbsp kefir herb sauce (from fridge jar)','Greek salad: tomatoes, cucumber, red onion, olives, feta, olive oil, red wine vinegar, oregano'],
-      steps: ['Mix beef with onion, garlic, egg, grated zucchini, carrot, mushrooms, oregano, paprika, soy sauce, salt and pepper.','Shape into 3–4 patties.','Air-fry or pan-fry in olive oil 4–5 min per side until cooked through.','Reheat sweet potato from Saturday batch.','Chop tomatoes, cucumber, onion, add olives and feta. Dress with olive oil, vinegar and oregano.','Serve patties with sweet potato, Greek salad and kefir herb sauce.'],
-      note: null
-    },
-    lentil_salad: {
-      name: 'Lentil Salad', meta: '15 min · Chicken breast',
-      ingredients: ['400g chicken breast','⅓ cup lentils (from Sat batch)','80–100g bulgur-rice-lentil mix (from Sat batch)','1 roasted red pepper (from Sat batch, sliced)','2 tbsp walnuts','1 tbsp sunflower seeds','50g feta (crumbled)','2 tbsp pickled onion','2–3 tbsp miso-honey dressing (from fridge jar)'],
-      steps: ['Pan-cook or air-fry chicken breast. Slice.','Use lentils and bulgur mix from Saturday batch — reheat or serve at room temp.','Assemble: bulgur-lentil mix, lentils, roasted red pepper, pickled onion.','Top with sliced chicken, walnuts, sunflower seeds, crumbled feta.','Drizzle with miso-honey dressing from fridge jar.'],
-      note: '🔄 Same dressing jar as Protein Bowl — made Saturday.'
-    },
-    med_veggie: {
-      name: 'Med Veggie Bowl', meta: '20 min · Chicken breast',
-      ingredients: ['400g chicken breast','1 medium aubergine (cubed, from Sat batch)','100g mushrooms (sliced, from Sat batch)','1 medium zucchini (sliced, from Sat batch)','1 red bell pepper (sliced, from Sat batch)','1 medium red onion (wedges, from Sat batch)','Handful cherry tomatoes','2 tbsp kalamata olives','Fresh lemon juice','3–4 tbsp kefir herb sauce (from fridge jar)'],
-      steps: ['Reheat veggies from Saturday batch — do not cook fresh.','Cook chicken breast in pan or air fryer. Slice.','Arrange bowl with veggies, olives and chicken.','Finish with lemon juice and spoon over kefir herb sauce.','On lifting days: add bulgur/rice/lentil mix as side for post-workout carbs.'],
-      note: '🔁 Veggies batch-cooked Saturday. Reheat only.'
-    }
-  };
-
-  const PLAN = {
-    1: { lunch: {...RECIPES.curry,        meta: '35 min · Chicken breast'},   dinner: {...RECIPES.med_veggie,   meta: '20 min · Chicken breast'} },
-    2: { lunch: {...RECIPES.protein_bowl, meta: '25 min · Chicken breast'},   dinner: {...RECIPES.biftekia,     meta: '35 min · Greek beef patties'} },
-    3: { lunch: {...RECIPES.lentil_salad, meta: '15 min · Chicken breast'},   dinner: {...RECIPES.noodles,      meta: '25 min · Chicken thighs'} },
-    4: { lunch: {...RECIPES.protein_bowl, meta: '25 min · Salmon'},           dinner: {...RECIPES.souvlaki,     meta: '20 min · Chicken thighs'} },
-    5: { lunch: {...RECIPES.lentil_salad, meta: '15 min · Chicken breast'},   dinner: {...RECIPES.med_veggie,   meta: '20 min · Salmon'} },
-    6: { lunch: {...RECIPES.souvlaki,     meta: '20 min · Chicken thighs'},   dinner: {...RECIPES.curry,        meta: '35 min · Chicken breast'} },
-    0: { lunch: {...RECIPES.biftekia,     meta: '35 min · Greek beef patties'}, dinner: {...RECIPES.noodles,   meta: '25 min · Chicken thighs'} }
-  };
-
-  let activeDetail = null;
-  let activeBatch  = null;
-  let viewingDay   = null;
-
-  function switchTab(tab, el) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    document.getElementById('view-' + tab).classList.add('active');
-    el.classList.add('active');
+var RECIPES = {
+  souvlaki: {
+    name: 'Souvlaki Bowl',
+    ingredients: [
+      '400g chicken thighs (boneless, skin-on)',
+      '1 tbsp olive oil',
+      '1 tsp dried oregano',
+      '1 tsp smoked paprika',
+      '1/2 tsp garlic powder',
+      'Salt, pepper, splash of vinegar',
+      '1 large sweet potato (air-fried, from Sat batch)',
+      'Handful cherry tomatoes',
+      '1/2 cucumber (sliced)',
+      '1/4 red onion (pickled, from Sat batch)',
+      '1 cup frozen shredded cabbage',
+      'Fresh parsley',
+      '3 tbsp Greek yogurt + sriracha (sauce)'
+    ],
+    steps: [
+      'Marinate chicken thighs in olive oil, oregano, paprika, garlic powder, salt, pepper and vinegar for at least 15 min.',
+      'Air-fry chicken at 200C for 18-20 min, flipping halfway, until cooked through.',
+      'Reheat sweet potato from Saturday batch.',
+      'Arrange bowl: cabbage, sweet potato, tomatoes, cucumber, pickled onion, parsley.',
+      'Slice chicken and place on top. Mix yogurt and sriracha, serve alongside.'
+    ],
+    note: null
+  },
+  protein_bowl_salmon: {
+    name: 'Protein Bowl',
+    meta: '25 min · Salmon',
+    ingredients: [
+      '300g salmon fillet, skin-on',
+      '80g red quinoa (dry weight)',
+      '80g frozen kale cubes',
+      '1 medium zucchini (sliced, air-fried)',
+      '80g frozen edamame (thawed)',
+      'Handful cherry tomatoes (halved)',
+      '1/2 cucumber (sliced)',
+      '1/4 red onion (pickled, from fridge jar)',
+      '30g feta cheese (crumbled)',
+      'Fresh parsley',
+      '2-3 tbsp miso-honey dressing (from fridge jar)'
+    ],
+    steps: [
+      'Cook red quinoa in rice cooker.',
+      'Air-fry or pan-sear salmon skin-side down 4-5 min, flip 3 more min. Always eat the skin.',
+      'Thaw kale cubes, squeeze dry, warm 1-2 min in pan with olive oil, lemon and salt. Cool before adding.',
+      'Air-fry zucchini slices until tender.',
+      'Assemble: quinoa base, kale, zucchini, edamame, tomatoes, cucumber, pickled onion.',
+      'Top with salmon and feta. Drizzle with miso-honey dressing.'
+    ],
+    note: 'No chickpeas - weekly max already reached on Wed.'
+  },
+  protein_bowl_chicken: {
+    name: 'Protein Bowl',
+    meta: '25 min · Chicken breast',
+    ingredients: [
+      '300g chicken breast',
+      '80g red quinoa (dry weight)',
+      '80g frozen kale cubes',
+      '1 medium zucchini (sliced, air-fried)',
+      '80g frozen edamame (thawed)',
+      'Handful cherry tomatoes (halved)',
+      '1/2 cucumber (sliced)',
+      '1/4 red onion (pickled, from fridge jar)',
+      '30g feta cheese (crumbled)',
+      'Fresh parsley',
+      '2-3 tbsp miso-honey dressing (from fridge jar)'
+    ],
+    steps: [
+      'Cook red quinoa in rice cooker.',
+      'Pan-cook or air-fry chicken breast. Slice.',
+      'Thaw kale cubes, squeeze dry, warm 1-2 min in pan with olive oil, lemon and salt. Cool before adding.',
+      'Air-fry zucchini slices until tender.',
+      'Assemble: quinoa base, kale, zucchini, edamame, tomatoes, cucumber, pickled onion.',
+      'Top with chicken and feta. Drizzle with miso-honey dressing.'
+    ],
+    note: 'No chickpeas - weekly max already reached on Wed.'
+  },
+  noodles: {
+    name: 'Asian Noodles',
+    meta: '25 min · Chicken thighs',
+    ingredients: [
+      '400g chicken thighs',
+      '100g rice noodles (dry weight)',
+      '1 cup frozen shredded cabbage',
+      'Large handful frozen kale cubes',
+      '200ml hot water + 1 tsp chicken stock powder',
+      '1 tbsp miso paste (add off heat)',
+      '2 tbsp kimchi (added after cooking)',
+      '2 tbsp low-sodium soy sauce',
+      '1 tsp fish sauce',
+      '1 tbsp natural peanut butter',
+      '1 tbsp peanuts',
+      '1 tsp chili oil',
+      '1 tsp chili flakes',
+      '2 garlic cloves (minced)',
+      '1 tsp smoked paprika'
+    ],
+    steps: [
+      'Cook chicken thighs in pan or air fryer. Slice.',
+      'Saute garlic with paprika and chili flakes in a little oil.',
+      'Add hot water + stock powder. Stir in soy sauce, fish sauce and peanut butter.',
+      'Add frozen cabbage directly into broth, simmer 3 min.',
+      'Add rice noodles, cook per packet.',
+      'Add frozen kale last 2-3 min - it thaws instantly.',
+      'Remove from heat, stir in miso paste. Do not boil after this.',
+      'Serve topped with chicken, kimchi, peanuts and chili oil.'
+    ],
+    note: null
+  },
+  curry: {
+    name: 'Chicken Curry',
+    meta: '35 min · Chicken breast',
+    ingredients: [
+      '400g chicken breast',
+      '200ml light coconut milk',
+      '1 tbsp olive or coconut oil',
+      '1 medium onion (diced)',
+      '3 garlic cloves (minced)',
+      '1 tsp fresh ginger (grated)',
+      '1 tsp turmeric',
+      '1 tsp cumin',
+      '1 tsp coriander powder',
+      '1 tsp garam masala',
+      '1/2 tsp chilli powder',
+      'Salt to taste',
+      '100g frozen spinach',
+      '0.5 cup green peas',
+      '60g brown rice (dry weight)',
+      '100ml kefir + pinch cumin (raita)'
+    ],
+    steps: [
+      'Cook brown rice in rice cooker.',
+      'Heat oil, saute onion until golden (~5 min). Add garlic and ginger, cook 1 min.',
+      'Add all spices, stir 30 sec until fragrant.',
+      'Add cubed chicken breast, cook until sealed.',
+      'Pour in coconut milk, simmer 15 min.',
+      'Stir in frozen spinach and peas, cook 2 more min.',
+      'Serve over rice with kefir-cumin raita on the side.'
+    ],
+    note: null
+  },
+  biftekia: {
+    name: 'Biftekia',
+    meta: '35 min · Greek beef patties',
+    ingredients: [
+      '250g lean ground beef (10-15% fat)',
+      '1 small onion (grated)',
+      '1 garlic clove (minced)',
+      '1 egg',
+      '1/2 zucchini (grated)',
+      '1 carrot (grated)',
+      '100g mushrooms (finely diced)',
+      '1 tbsp dried oregano',
+      '1 tsp smoked paprika',
+      'Salt, pepper, splash soy sauce',
+      '1 large sweet potato (from Sat batch)',
+      '3-4 tbsp kefir herb sauce (from fridge jar)',
+      'Greek salad: tomatoes, cucumber, red onion, olives, feta, olive oil, red wine vinegar, oregano'
+    ],
+    steps: [
+      'Mix beef with onion, garlic, egg, grated zucchini, carrot, mushrooms, oregano, paprika, soy sauce, salt and pepper.',
+      'Shape into 3-4 patties.',
+      'Air-fry or pan-fry in olive oil 4-5 min per side until cooked through.',
+      'Reheat sweet potato from Saturday batch.',
+      'Chop tomatoes, cucumber, onion, add olives and feta. Dress with olive oil, vinegar and oregano.',
+      'Serve patties with sweet potato, Greek salad and kefir herb sauce.'
+    ],
+    note: null
+  },
+  lentil_salad: {
+    name: 'Lentil Salad',
+    meta: '15 min · Chicken breast',
+    ingredients: [
+      '400g chicken breast',
+      '1/3 cup lentils (from Sat batch)',
+      '80-100g bulgur-rice-lentil mix (from Sat batch)',
+      '1 roasted red pepper (from Sat batch, sliced)',
+      '2 tbsp walnuts',
+      '1 tbsp sunflower seeds',
+      '50g feta (crumbled)',
+      '2 tbsp pickled onion',
+      '2-3 tbsp miso-honey dressing (from fridge jar)'
+    ],
+    steps: [
+      'Pan-cook or air-fry chicken breast. Slice.',
+      'Use lentils and bulgur mix from Saturday batch - reheat or serve at room temp.',
+      'Assemble: bulgur-lentil mix, lentils, roasted red pepper, pickled onion.',
+      'Top with sliced chicken, walnuts, sunflower seeds, crumbled feta.',
+      'Drizzle with miso-honey dressing from fridge jar.'
+    ],
+    note: 'Same dressing jar as Protein Bowl - made Saturday.'
+  },
+  med_veggie_chicken: {
+    name: 'Med Veggie Bowl',
+    meta: '20 min · Chicken breast',
+    ingredients: [
+      '400g chicken breast',
+      '1 medium aubergine (cubed, from Sat batch)',
+      '100g mushrooms (sliced, from Sat batch)',
+      '1 medium zucchini (sliced, from Sat batch)',
+      '1 red bell pepper (sliced, from Sat batch)',
+      '1 medium red onion (wedges, from Sat batch)',
+      'Handful cherry tomatoes',
+      '2 tbsp kalamata olives',
+      'Fresh lemon juice',
+      '3-4 tbsp kefir herb sauce (from fridge jar)'
+    ],
+    steps: [
+      'Reheat veggies from Saturday batch - do not cook fresh.',
+      'Cook chicken breast in pan or air fryer. Slice.',
+      'Arrange bowl with veggies, olives and chicken.',
+      'Finish with lemon juice and spoon over kefir herb sauce.',
+      'On lifting days: add bulgur/rice/lentil mix as side for post-workout carbs.'
+    ],
+    note: 'Veggies batch-cooked Saturday. Reheat only.'
+  },
+  med_veggie_salmon: {
+    name: 'Med Veggie Bowl',
+    meta: '20 min · Salmon',
+    ingredients: [
+      '300g salmon fillet, skin-on',
+      '1 medium aubergine (cubed, from Sat batch)',
+      '100g mushrooms (sliced, from Sat batch)',
+      '1 medium zucchini (sliced, from Sat batch)',
+      '1 red bell pepper (sliced, from Sat batch)',
+      '1 medium red onion (wedges, from Sat batch)',
+      'Handful cherry tomatoes',
+      '2 tbsp kalamata olives',
+      'Fresh lemon juice',
+      '3-4 tbsp kefir herb sauce (from fridge jar)'
+    ],
+    steps: [
+      'Reheat veggies from Saturday batch - do not cook fresh.',
+      'Air-fry or pan-sear salmon skin-side down 4-5 min, flip 3 more min. Always eat the skin.',
+      'Arrange bowl with veggies, olives and salmon.',
+      'Finish with lemon juice and spoon over kefir herb sauce.',
+      'On lifting days: add bulgur/rice/lentil mix as side for post-workout carbs.'
+    ],
+    note: 'Veggies batch-cooked Saturday. Reheat only.'
   }
+};
 
-  function getTodayDay() { return new Date().getDay(); }
+var PLAN = {
+  1: { lunch: RECIPES.curry,               dinner: RECIPES.med_veggie_chicken },
+  2: { lunch: RECIPES.protein_bowl_chicken, dinner: RECIPES.biftekia },
+  3: { lunch: RECIPES.lentil_salad,        dinner: RECIPES.noodles },
+  4: { lunch: RECIPES.protein_bowl_salmon, dinner: RECIPES.souvlaki },
+  5: { lunch: RECIPES.lentil_salad,        dinner: RECIPES.med_veggie_salmon },
+  6: { lunch: RECIPES.souvlaki,            dinner: RECIPES.curry },
+  0: { lunch: RECIPES.biftekia,            dinner: RECIPES.noodles }
+};
 
-  function renderDate(dayIdx) {
-    const d = new Date();
-    const isToday = dayIdx === d.getDay();
-    if (isToday) {
-      document.getElementById('dateDisplay').textContent =
-        FULL_DAYS[d.getDay()] + ', ' + d.getDate() + ' ' + MONTHS[d.getMonth()];
-    } else {
-      const target = new Date(d);
-      target.setDate(d.getDate() + (dayIdx - d.getDay()));
-      document.getElementById('dateDisplay').textContent =
-        FULL_DAYS[dayIdx] + ', ' + target.getDate() + ' ' + MONTHS[target.getMonth()];
-    }
+// Souvlaki is always chicken thighs
+PLAN[4].dinner.meta = '20 min · Chicken thighs';
+PLAN[6].lunch.meta  = '20 min · Chicken thighs';
+
+var activeDetail = null;
+var activeBatch  = null;
+var viewingDay   = null;
+
+function switchTab(tab, el) {
+  var tabs = document.querySelectorAll('.tab');
+  var views = document.querySelectorAll('.view');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+  for (var i = 0; i < views.length; i++) views[i].classList.remove('active');
+  document.getElementById('view-' + tab).classList.add('active');
+  el.classList.add('active');
+}
+
+function getTodayDay() {
+  return new Date().getDay();
+}
+
+function renderDate(dayIdx) {
+  var d = new Date();
+  var isToday = dayIdx === d.getDay();
+  var el = document.getElementById('dateDisplay');
+  if (isToday) {
+    el.textContent = FULL_DAYS[d.getDay()] + ', ' + d.getDate() + ' ' + MONTHS[d.getMonth()];
+  } else {
+    var target = new Date(d);
+    target.setDate(d.getDate() + (dayIdx - d.getDay()));
+    el.textContent = FULL_DAYS[dayIdx] + ', ' + target.getDate() + ' ' + MONTHS[target.getMonth()];
   }
+}
 
-  function renderMeals(dayIdx) {
-    const data = PLAN[dayIdx];
-    document.getElementById('lunch-name').textContent  = data.lunch.name;
-    document.getElementById('lunch-meta').textContent  = data.lunch.meta;
-    document.getElementById('dinner-name').textContent = data.dinner.name;
-    document.getElementById('dinner-meta').textContent = data.dinner.meta;
+function renderMeals(dayIdx) {
+  var data = PLAN[dayIdx];
+  document.getElementById('lunch-name').textContent  = data.lunch.name;
+  document.getElementById('lunch-meta').textContent  = data.lunch.meta;
+  document.getElementById('dinner-name').textContent = data.dinner.name;
+  document.getElementById('dinner-meta').textContent = data.dinner.meta;
+}
+
+function toggleDetail(meal) {
+  var panel = document.getElementById('detail-panel');
+  var day = viewingDay !== null ? viewingDay : getTodayDay();
+  var m = PLAN[day][meal];
+  if (activeDetail === meal) { closeDetail(); return; }
+  activeDetail = meal;
+  document.getElementById('card-lunch').classList.toggle('active',  meal === 'lunch');
+  document.getElementById('card-dinner').classList.toggle('active', meal === 'dinner');
+  document.getElementById('detail-title').textContent = m.name;
+  var ingHtml = '';
+  for (var i = 0; i < m.ingredients.length; i++) {
+    ingHtml += '<li><span class="ing-dot"></span>' + m.ingredients[i] + '</li>';
   }
-
-  function toggleDetail(meal) {
-    const panel = document.getElementById('detail-panel');
-    const day   = viewingDay !== null ? viewingDay : getTodayDay();
-    const m     = PLAN[day][meal];
-    if (activeDetail === meal) { closeDetail(); return; }
-    activeDetail = meal;
-    document.getElementById('card-lunch').classList.toggle('active',  meal === 'lunch');
-    document.getElementById('card-dinner').classList.toggle('active', meal === 'dinner');
-    document.getElementById('detail-title').textContent = m.name;
-    document.getElementById('detail-ingredients').innerHTML =
-      m.ingredients.map(i => `<li><span class="ing-dot"></span>${i}</li>`).join('');
-    document.getElementById('detail-steps').innerHTML =
-      m.steps.map(s => `<li>${s}</li>`).join('');
-    document.getElementById('detail-note').innerHTML =
-      m.note ? `<div class="note-tag">${m.note}</div>` : '';
-    panel.classList.add('visible');
-    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  document.getElementById('detail-ingredients').innerHTML = ingHtml;
+  var stepsHtml = '';
+  for (var i = 0; i < m.steps.length; i++) {
+    stepsHtml += '<li>' + m.steps[i] + '</li>';
   }
+  document.getElementById('detail-steps').innerHTML = stepsHtml;
+  document.getElementById('detail-note').innerHTML = m.note
+    ? '<div class="note-tag">' + m.note + '</div>'
+    : '';
+  panel.classList.add('visible');
+  setTimeout(function() {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 50);
+}
 
-  function closeDetail() {
-    activeDetail = null;
-    document.getElementById('detail-panel').classList.remove('visible');
-    document.getElementById('card-lunch').classList.remove('active');
-    document.getElementById('card-dinner').classList.remove('active');
-  }
+function closeDetail() {
+  activeDetail = null;
+  document.getElementById('detail-panel').classList.remove('visible');
+  document.getElementById('card-lunch').classList.remove('active');
+  document.getElementById('card-dinner').classList.remove('active');
+}
 
-  function toggleBatch(id) {
-    if (activeBatch === id) { closeBatch(id); return; }
-    if (activeBatch) closeBatch(activeBatch);
-    activeBatch = id;
-    document.getElementById('sc-' + id).classList.add('active');
-    document.getElementById('sd-' + id).classList.add('visible');
-    setTimeout(() => document.getElementById('sd-' + id).scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
-  }
+function toggleBatch(id) {
+  if (activeBatch === id) { closeBatch(id); return; }
+  if (activeBatch) closeBatch(activeBatch);
+  activeBatch = id;
+  document.getElementById('sc-' + id).classList.add('active');
+  document.getElementById('sd-' + id).classList.add('visible');
+  setTimeout(function() {
+    document.getElementById('sd-' + id).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 50);
+}
 
-  function closeBatch(id) {
-    activeBatch = null;
-    document.getElementById('sc-' + id).classList.remove('active');
-    document.getElementById('sd-' + id).classList.remove('visible');
-  }
+function closeBatch(id) {
+  activeBatch = null;
+  document.getElementById('sc-' + id).classList.remove('active');
+  document.getElementById('sd-' + id).classList.remove('visible');
+}
 
-  function renderWeek() {
-    const today = getTodayDay();
-    const row   = document.getElementById('weekRow');
-    row.innerHTML = '';
-    const d = new Date();
-    // Start from Monday: getDay() returns 0=Sun,1=Mon,...6=Sat
-    // Monday-based offset: if today is Sun (0), go back 6; otherwise go back (getDay()-1)
-    const dayOfWeek = d.getDay();
-    const mondayOffset = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-    const startOfWeek = new Date(d);
-    startOfWeek.setDate(d.getDate() - mondayOffset);
-
-    // Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6 (display order)
-    const MON_BASED_NAMES = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-    // Map display index (0=Mon) to JS getDay() value
-    const displayToJsDay = [1, 2, 3, 4, 5, 6, 0];
-
-    for (let i = 0; i < 7; i++) {
-      const day = new Date(startOfWeek);
-      day.setDate(startOfWeek.getDate() + i);
-      const jsDay = displayToJsDay[i];
-      const isToday = jsDay === today;
-      const pill = document.createElement('div');
-      pill.className = 'day-pill' + (isToday ? ' today selected' : '');
-      pill.innerHTML = `<span class="day-letter">${MON_BASED_NAMES[i]}</span><span class="day-num">${day.getDate()}</span>`;
-      pill.onclick = () => {
-        document.querySelectorAll('.day-pill').forEach(p => p.classList.remove('selected'));
+function renderWeek() {
+  var today = getTodayDay();
+  var row = document.getElementById('weekRow');
+  row.innerHTML = '';
+  var d = new Date();
+  var dayOfWeek = d.getDay();
+  var mondayOffset = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+  var startOfWeek = new Date(d);
+  startOfWeek.setDate(d.getDate() - mondayOffset);
+  var MON_BASED_NAMES = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  var displayToJsDay  = [1, 2, 3, 4, 5, 6, 0];
+  for (var i = 0; i < 7; i++) {
+    var day = new Date(startOfWeek);
+    day.setDate(startOfWeek.getDate() + i);
+    var jsDay = displayToJsDay[i];
+    var isToday = jsDay === today;
+    var pill = document.createElement('div');
+    pill.className = 'day-pill' + (isToday ? ' today selected' : '');
+    pill.innerHTML =
+      '<span class="day-letter">' + MON_BASED_NAMES[i] + '</span>' +
+      '<span class="day-num">' + day.getDate() + '</span>';
+    (function(jd) {
+      pill.onclick = function() {
+        var pills = document.querySelectorAll('.day-pill');
+        for (var k = 0; k < pills.length; k++) pills[k].classList.remove('selected');
         pill.classList.add('selected');
-        viewingDay = jsDay;
+        viewingDay = jd;
         closeDetail();
-        renderMeals(jsDay);
-        renderDate(jsDay);
+        renderMeals(jd);
+        renderDate(jd);
       };
-      row.appendChild(pill);
-    }
+    })(jsDay);
+    row.appendChild(pill);
   }
+}
 
-  function init() {
-    const today = getTodayDay();
-    viewingDay  = today;
-    renderDate(today);
-    renderMeals(today);
-    renderWeek();
-  }
+function init() {
+  var today = getTodayDay();
+  viewingDay = today;
+  renderDate(today);
+  renderMeals(today);
+  renderWeek();
+}
 
-  init();
+init();
 </script>
 </body>
 </html>

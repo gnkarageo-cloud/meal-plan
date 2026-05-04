@@ -556,13 +556,13 @@
   };
 
   const PLAN = {
-    1: { lunch: RECIPES.curry,        dinner: RECIPES.noodles },
-    2: { lunch: RECIPES.med_veggie,   dinner: RECIPES.protein_bowl },
-    3: { lunch: RECIPES.lentil_salad, dinner: RECIPES.med_veggie },
-    4: { lunch: RECIPES.protein_bowl, dinner: RECIPES.souvlaki },
-    5: { lunch: RECIPES.lentil_salad, dinner: RECIPES.biftekia },
-    6: { lunch: RECIPES.souvlaki,     dinner: RECIPES.curry },
-    0: { lunch: RECIPES.biftekia,     dinner: RECIPES.noodles }
+    1: { lunch: {...RECIPES.curry,        meta: '35 min · Chicken breast'},   dinner: {...RECIPES.med_veggie,   meta: '20 min · Chicken breast'} },
+    2: { lunch: {...RECIPES.protein_bowl, meta: '25 min · Chicken breast'},   dinner: {...RECIPES.biftekia,     meta: '35 min · Greek beef patties'} },
+    3: { lunch: {...RECIPES.lentil_salad, meta: '15 min · Chicken breast'},   dinner: {...RECIPES.noodles,      meta: '25 min · Chicken thighs'} },
+    4: { lunch: {...RECIPES.protein_bowl, meta: '25 min · Salmon'},           dinner: {...RECIPES.souvlaki,     meta: '20 min · Chicken thighs'} },
+    5: { lunch: {...RECIPES.lentil_salad, meta: '15 min · Chicken breast'},   dinner: {...RECIPES.med_veggie,   meta: '20 min · Salmon'} },
+    6: { lunch: {...RECIPES.souvlaki,     meta: '20 min · Chicken thighs'},   dinner: {...RECIPES.curry,        meta: '35 min · Chicken breast'} },
+    0: { lunch: {...RECIPES.biftekia,     meta: '35 min · Greek beef patties'}, dinner: {...RECIPES.noodles,   meta: '25 min · Chicken thighs'} }
   };
 
   let activeDetail = null;

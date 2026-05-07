@@ -947,6 +947,7 @@ function renderWeek() {
   startOfWeek.setDate(d.getDate() - mondayOffset);
   var MON_BASED_NAMES = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
   var displayToJsDay  = [1, 2, 3, 4, 5, 6, 0];
+  var pillEls = [];
   for (var i = 0; i < 7; i++) {
     var day = new Date(startOfWeek);
     day.setDate(startOfWeek.getDate() + i);
@@ -957,18 +958,20 @@ function renderWeek() {
     pill.innerHTML =
       '<span class="day-letter">' + MON_BASED_NAMES[i] + '</span>' +
       '<span class="day-num">' + day.getDate() + '</span>';
-    (function(jd) {
-      pill.onclick = function() {
-        var pills = document.querySelectorAll('.day-pill');
-        for (var k = 0; k < pills.length; k++) pills[k].classList.remove('selected');
-        pill.classList.add('selected');
+    pillEls.push(pill);
+    row.appendChild(pill);
+  }
+  for (var j = 0; j < 7; j++) {
+    (function(idx, jd) {
+      pillEls[idx].onclick = function() {
+        for (var k = 0; k < pillEls.length; k++) pillEls[k].classList.remove('selected');
+        pillEls[idx].classList.add('selected');
         viewingDay = jd;
         closeDetail();
         renderMeals(jd);
         renderDate(jd);
       };
-    })(jsDay);
-    row.appendChild(pill);
+    })(j, displayToJsDay[j]);
   }
 }
 
